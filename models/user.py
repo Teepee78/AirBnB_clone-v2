@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 """This module defines a class User"""
-from models.base_model import BaseModel, Base
-from sqlalchemy import String, Column
-from sqlalchemy.orm import relationship
+from sqlalchemy import String, Column, ForeignKey
 from review import Review
+from sqlalchemy.orm import relationship
+from sqlalchemy import String, Column
+from models.base_model import BaseModel, Base
+<< << << < HEAD
+== == == =
+>>>>>> > origin / master
 
 
 class User(BaseModel, Base):
