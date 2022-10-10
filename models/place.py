@@ -4,6 +4,15 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import String, Column, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
 
+place_amenities = Table(
+    'place_amenity',
+    Base.metadata,
+    Column('place_id', String(60), ForeignKey('places.id'),
+           primary_key=True, nullable=False),
+    Column('amenity_id', String(60), ForeignKey('amenities.id'),
+           primary_key=True, nullable=False)
+)
+
 
 class Place(BaseModel, Base):
     """ A place to stay """
@@ -22,3 +31,6 @@ class Place(BaseModel, Base):
     reviews = relationship(
         'Review', cascade='all, delete-orphan', backref='place')
     amenity_ids = []
+    amenities = relationship(
+        'Amenity', secondary=place_amenity, viewonly=False
+    )
