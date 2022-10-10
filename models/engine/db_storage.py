@@ -38,7 +38,8 @@ class DBStorage():
             'City': City,
             'User': User,
             'Place': Place,
-            'Review': Review
+            'Review': Review,
+            'Amenity': Amenity
         }
         obj = {}
         if cls in classes:
