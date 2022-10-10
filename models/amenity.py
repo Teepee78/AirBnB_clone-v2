@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel, Base
-from sqlalchemy import String, Column, ForeignKey, Table
+from sqlalchemy import String, Column, ForeignKey
 
 
 class Amenity(BaseModel, Base):
