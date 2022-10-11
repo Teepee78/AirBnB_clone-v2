@@ -29,7 +29,7 @@ class DBStorage():
         self.__engine = create_engine(self.url, pool_pre_ping=True)
         if getenv("HBNB_ENV", default=None) == "test":
             # Drop all tables
-            Base.metadata.drop_all(bind=DBStorage.__engine)
+            Base.metadata.drop_all(bind=self.__engine)
 
     def all(self, cls=None):
         """Returns all elements or elements filtered by class in DBStorage"""
