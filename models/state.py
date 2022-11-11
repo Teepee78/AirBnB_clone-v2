@@ -15,6 +15,6 @@ class State(BaseModel, Base):
         def cities(self):
             """Return the list of City objects related to this State"""
             name = ""
-            cities = [v for k, v in storage.all().items()
+            cities = [v for k, v in models.storage.all().items()
                       if 'City' in k and v.state_id == self.id]
             return cities
