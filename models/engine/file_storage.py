@@ -77,3 +77,7 @@ class FileStorage:
                 if val is obj:
                     FileStorage.__objects.pop(key)
             self.save()
+
+    def close(self):
+        """Calls reload method for deserializing json objects"""
+        self.reload()
