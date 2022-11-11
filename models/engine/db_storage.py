@@ -50,7 +50,7 @@ class DBStorage():
                     co.__dict__.pop("_sa_instance_state")
                 dicti = co.to_dict()
                 clss = dicti['__class__']
-                key = f"{clss}.{co.id}"
+                key = "{}.{}".format(clss, co.id)
                 obj[key] = co
             return obj
         elif cls is None:
@@ -61,7 +61,7 @@ class DBStorage():
                         co.__dict__.pop("_sa_instance_state")
                     dicti = co.to_dict()
                     clss = dicti['__class__']
-                    key = f"[{clss}] ({co.id})"
+                    key = "[{}] ({})".format(clss, co.id)
                     obj[key] = co
             return obj
         else:
