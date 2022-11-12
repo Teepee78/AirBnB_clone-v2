@@ -12,7 +12,7 @@ def shutdown_session():
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
-    states = storage.all(State)
+    states = storage.all('State')
     for state in states:
         print(state)
     return render_template('7-states_list.html')
