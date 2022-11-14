@@ -25,7 +25,7 @@ def states_list():
 
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
-	
+    
 
 
 if __name__ == '__main__':
