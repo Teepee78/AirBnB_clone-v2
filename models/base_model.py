@@ -7,8 +7,12 @@ from sqlalchemy import create_engine, MetaData, Table, Integer, String, \
                     Column, ForeignKey, Numeric, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
-
-Base = declarative_base()
+class Base(object):
+    __table_args__ = {
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'latin1'
+    }
+Base = declarative_base(cls=Base)
 
 
 class BaseModel:

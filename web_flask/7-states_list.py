@@ -18,6 +18,8 @@ def shutdown_session(exception):
 def states_list():
     """Renders states list"""
     states = storage.all('State')
+    print("Yes")
+    print(states)
     return render_template('7-states_list.html', states=states)
 
 
