@@ -10,9 +10,8 @@ place_amenities_table = Table(
     Column('place_id', String(60).with_variant(
         VARCHAR(60, charset='latin1'), "mysql"),
             ForeignKey('places.id'), primary_key=True, nullable=False),
-    Column('amenity_id', String(60).with_variant(
-        VARCHAR(60, charset='latin1'), "mysql"),
-            ForeignKey('amenities.id'), primary_key=True, nullable=False)
+    Column('amenity_id', String(60),
+           ForeignKey('amenities.id'), primary_key=True, nullable=False)
 )
 
 
@@ -20,9 +19,7 @@ class Place(BaseModel, Base):
     """ A place to stay """
     __tablename__ = 'places'
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
-    user_id = Column(String(60).with_variant(
-        VARCHAR(60, charset='latin1'), "mysql",
-    ), ForeignKey('users.id'), nullable=False)
+    user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
     name = Column(String(128), nullable=False)
     description = Column(String(1024), nullable=True)
     number_rooms = Column(String(1024), nullable=False, default=0)
