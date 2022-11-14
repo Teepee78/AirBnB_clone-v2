@@ -6,18 +6,24 @@ import sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Integer, String, \
                     Column, ForeignKey, Numeric, DateTime
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.dialects.mysql import VARCHAR
+
 
 class Base(object):
     __table_args__ = {
         'mysql_engine': 'InnoDB',
         'mysql_charset': 'latin1'
     }
+
+
 Base = declarative_base(cls=Base)
 
 
-class BaseModel(Base):
+class BaseModel:
     """A base class for all hbnb models"""
-    id = Column(String(60), primary_key=True, nullable=False)
+    id = Column(String(60).with_variant(
+        VARCHAR(60, charset='latin1'), "mysql"),
+        primary_key=True, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
 
