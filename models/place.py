@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import String, Column, ForeignKey, Integer, Float, Table
 from sqlalchemy.orm import relationship
+from sqlalchemy.dialects.mysql import VARCHAR
 
 place_amenities_table = Table(
     'place_amenity', Base.metadata,
