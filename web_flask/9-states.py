@@ -14,11 +14,19 @@ def shutdown_session(exception):
     storage.close()
 
 
-@app.route('/states_list', strict_slashes=False)
-def states_list():
+@app.route('/states', strict_slashes=False)
+@app.route('/states/<string:id>', strict_slashes=False)
+def states(id=None):
     """Renders states list"""
     states = storage.all('State')
-    return render_template('7-states_list.html', states=states)
+    if id is None:
+        return render_template('7-states_list.html', states=states)
+    else:
+        state_key = "State.{}".format(id)
+        if id in states:
+            state = states[state_key]
+            return render_template('9-states.html', states=[state, ])
+        return render_template('9-states.html', states=None)
 
 
 if __name__ == '__main__':
